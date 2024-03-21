@@ -1,4 +1,5 @@
 from requests_html import HTMLSession
+from sql_insert import insertDatabase
 import requests as req
 
 def main():
@@ -38,6 +39,8 @@ def main():
                     ratings.append(value)
 
         films[title] = ratings
+
+    insertDatabase(films)
 
 if __name__ == "__main__":
     main()
