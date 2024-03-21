@@ -1,6 +1,5 @@
-import requests as req
 from requests_html import HTMLSession
-from bs4 import BeautifulSoup as bs
+import requests as req
 
 def main():
     
@@ -18,18 +17,27 @@ def main():
             if 'data-target-link' in item.attrs:
                 links.append(item.attrs['data-target-link'])
 
+
+    films = {}
+
     for item in links:
 
         url = "https://letterboxd.com/csi" + item + "rating-histogram/"
 
         with session.get(url) as site:
 
-            print(site.text)
+            classes = site.html.find("a")
 
-            #titles = site.html.find("title")
+            title = item.replace("-", " ").replace("/film/", "").replace("/", "").capitalize()
 
-            #for item in titles:
-            #    print(item.text)
+            ratings = []
+
+            for item in classes:
+                if "ratings" in str(item.text):
+                    value = int(str(item.text).replace(",", "").split()[0])
+                    ratings.append(value)
+
+        films[title] = ratings
 
 if __name__ == "__main__":
     main()
