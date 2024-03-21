@@ -24,4 +24,6 @@ def insertDatabase(films):
             cur.execute("INSERT INTO ratings (rate, quantity, film_id) VALUES(?, ?, ?)", valuesToInsert)
             con.commit()
         value += 1
+    cur.close()
+    con.close()
 

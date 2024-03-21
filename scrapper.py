@@ -42,5 +42,5 @@ def main():
 
     insertDatabase(films)
 
-if __name__ == "__main__":
-    main()
+
+main()
