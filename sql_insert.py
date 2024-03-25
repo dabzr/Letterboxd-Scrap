@@ -8,7 +8,7 @@ def insertDatabase(films):
         for key in films.keys():
             filmNames.append(key)
 
-        rates:float = [(i/2) for i in range(10)]
+        rates:float = [(i/2) for i in range(1,11)]
 
         value = 0
         films_values = []
