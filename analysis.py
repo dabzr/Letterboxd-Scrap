@@ -23,6 +23,7 @@ cur.close()
 con.close()
 
 df = pd.DataFrame(films)
+print(df)
 resultado = df[0].drop_duplicates()
 resultado.reset_index(drop=True, inplace=True)
 print(resultado)
